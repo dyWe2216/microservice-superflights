@@ -38,7 +38,7 @@ export class PassengerController {
   @Put(':id')
   update(
     @Param('id') id: string,
-    passengerDTO: PassengerDTO,
+    @Body() passengerDTO: PassengerDTO,
   ): Observable<IPassenger> {
     return this._clientProxyPassenger.send(PassengerMSG.UPDATE, {
       id,
