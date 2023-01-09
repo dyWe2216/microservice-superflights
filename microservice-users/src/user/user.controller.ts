@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { UserMSG } from 'src/common/constants';
 import { UserDTO } from './dto/user.dto';
@@ -39,5 +31,19 @@ export class UserController {
   @MessagePattern(UserMSG.DELETE)
   delete(@Payload() id: string) {
     return this.userService.delete(id);
+  }
+
+  @MessagePattern(UserMSG.VALID_USER)
+  async validateUser(@Payload() payload: any): Promise<any> {
+    const user = await this.userService.findByUsername(payload.username);
+
+    const isValidPassword = await this.userService.checkPassword(
+      payload.password,
+      user.password,
+    );
+
+    if (user && isValidPassword) return user;
+
+    return null;
   }
 }

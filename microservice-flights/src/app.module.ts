@@ -8,14 +8,14 @@ import { FlightModule } from './flight/flight.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.env.development'],
-      isGlobal: true
+      envFilePath: '.env.development',
+      isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.URI_MONGODB, {
-      useCreateIndex: true,
-      useFindAndModify: false
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     }),
-    FlightModule
+    FlightModule,
   ],
   controllers: [AppController],
   providers: [AppService],
