@@ -6,10 +6,10 @@ import { AppService } from './app.service';
 import { PassengerModule } from './passenger/passenger.module';
 
 @Module({
-  imports: [ 
+  imports: [
     ConfigModule.forRoot({
       envFilePath: ['.env.development'],
-      isGlobal: true
+      isGlobal: true,
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -18,9 +18,9 @@ import { PassengerModule } from './passenger/passenger.module';
       }),
       inject: [ConfigService],
     }),
-    PassengerModule
+    PassengerModule,
   ],
-  controllers: [ AppController ],
-  providers: [ AppService ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

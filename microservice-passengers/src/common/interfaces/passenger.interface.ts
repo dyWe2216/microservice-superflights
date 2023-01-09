@@ -1,4 +1,4 @@
 export interface IPassenger extends Document {
-    name: string;
-    email: string;
+  name: string;
+  email: string;
 }
