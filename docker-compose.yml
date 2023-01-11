@@ -2,10 +2,10 @@ version: "3.7"
 
 services:
   app:
-    image: api_gateway:v2
-    container_name: api_gateway
+    image: api-gateway:v2
+    container_name: api-gateway
     build:
-      context: ./api_gateway
+      context: ./api-gateway
       dockerfile: Dockerfile
     env_file: .env
     ports:
@@ -65,7 +65,7 @@ services:
     expose:
       - 5672
       - 15672
-    restarts: always
+    restart: always
 
   mongodb:
     image: mongo:latest
