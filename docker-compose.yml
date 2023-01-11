@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   app:
@@ -84,5 +84,5 @@ services:
 volumes:
   mongodb:
 
-networs:
+networks:
   ms_nestjs:
