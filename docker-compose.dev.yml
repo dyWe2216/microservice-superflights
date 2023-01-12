@@ -2,8 +2,11 @@ version: "3.7"
 
 services:
   app:
-    image: dnleodud/api-gateway:v2
+    image: api-gateway:v2
     container_name: api-gateway
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
     env_file: .env
     ports:
       - 80:3000
@@ -15,8 +18,11 @@ services:
       - ms_nestjs
 
   microservice-flights:
-    image: dnleodud/microservice-flights:v2
+    image: microservice-flights:v2
     container_name: microservice-flights
+    build:
+      context: ./microservice-flights
+      dockerfile: Dockerfile
     env_file: .env
     depends_on:
       - mongodb
@@ -26,8 +32,11 @@ services:
       - ms_nestjs
 
   microservice-passengers:
-    image: dnleodud/microservice-passengers:v2
+    image: microservice-passengers:v2
     container_name: microservice-passengers
+    build:
+      context: ./microservice-passengers
+      dockerfile: Dockerfile
     env_file: .env
     depends_on:
       - mongodb
@@ -37,8 +46,11 @@ services:
       - ms_nestjs
 
   microservice-users:
-    image: dnleodud/microservice-users:v2
+    image: microservice-users:v2
     container_name: microservice-users
+    build:
+      context: ./microservice-users
+      dockerfile: Dockerfile
     env_file: .env
     depends_on:
       - mongodb
